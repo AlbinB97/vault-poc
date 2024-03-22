@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-dev-service
+spec:
+  selector:
+    app: vault-dev
+  ports:
+    - protocol: TCP
+      port: 8200
+      targetPort: 8200
+  type: NodePort

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault-dev-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault-dev
+  template:
+    metadata:
+      labels:
+        app: vault-dev
+    spec:
+      containers:
+      - name: vault-dev-container
+        image: harbor.<domain>/<registry_project>/<image>:<tag>
+        ports:
+        - containerPort: 8200
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 200m
+          limits:
+            memory: 512Mi
+            cpu: 300m
